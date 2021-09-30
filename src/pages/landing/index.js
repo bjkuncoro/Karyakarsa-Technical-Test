@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { Flex ,Heading, Text, Image} from '@chakra-ui/react'
+import { Flex , Text} from '@chakra-ui/react'
 import BtcCard from './BtcCard'
 
 const Landing = () => {
@@ -19,10 +19,13 @@ const Landing = () => {
     //all function and hooks
     useEffect(() => {
         //get Data and start interval when component start
-        const interval = setInterval(() => {
-            dispatch({type:'btcData/GET_BTC_DATA'})
-        }, 5000)
-        return () => clearInterval(interval)
+        // const interval = setInterval(() => {
+        //     dispatch({type:'btcData/GET_BTC_DATA'})
+        // }, 5000)
+        // return () => clearInterval(interval)
+
+        //try using recursive Timeout
+        recursiveTimeOutGetData()
     }, [])
 
     useEffect(() => {
@@ -38,8 +41,14 @@ const Landing = () => {
         console.log(status)
     }, [btcData.currentPrice])
 
+    const recursiveTimeOutGetData  =   ()=>{
+        dispatch({type:'btcData/GET_BTC_DATA'})
+        setTimeout(recursiveTimeOutGetData, 5000)
+    }
+
     return (
         <Flex width='100%' minHeight='100vh' bg='#eeeeee' align='center' direction='column' p={3}>
+            {/* display btc Card */}
             <BtcCard currPrice={currPrice} updatedTime={updatedTime} status={status} symbol={btcData.currentPrice?.bpi?.USD.symbol} />
             <Flex mt={10}>
                 <Text color="#9a9a9a" fontSize="sm" textAlign='center' fontWeight='normal'>

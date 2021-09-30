@@ -13,13 +13,13 @@ import {routes} from './router';
 import Landing from './pages/landing';
 import { ChakraProvider } from "@chakra-ui/react"
 
-
 const Root = (props)=>{
   const [anim, setAnim] = useState('')
 
   useEffect(() => {
     // console.log(routes)
   }, [])
+
   return (
     <Fragment>
       <Provider store={store}>
@@ -60,16 +60,15 @@ const Root = (props)=>{
   )
 }
 
-
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider>
       <Root />
     </ChakraProvider>
   </React.StrictMode>
-  ,document.getElementById('root')
+,document.getElementById('root')
 );
-
+  
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

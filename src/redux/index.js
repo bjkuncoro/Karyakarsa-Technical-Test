@@ -1,10 +1,12 @@
 import {combineReducers,createStore} from 'redux'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import user from './user/reducer'
+import btcData from './btcData/reducer'
+// import user from './user/reducer'
 
 const appReducer = combineReducers({
-    user,
+    // user,
+    btcData
 })
 
 const reducers = (state, action) => {

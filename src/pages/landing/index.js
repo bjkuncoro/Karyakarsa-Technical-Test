@@ -33,7 +33,7 @@ const Landing = () => {
         setupdatedTime(btcData.currentPrice?.time?.updated)
         // compare current price with previous
         const status = btcData.currentPrice?.bpi?.USD.rate_float > btcData.fiveSecondAgoPrice?.bpi?.USD.rate_float?'naik':btcData.currentPrice?.bpi?.USD.rate_float < btcData.fiveSecondAgoPrice?.bpi?.USD.rate_float?'turun':'tetap'
-        //status : string :[naik,turun,tetap]
+        //status : string : naik || turun || tetap
         setstatus(status)
         console.log(status)
     }, [btcData.currentPrice])

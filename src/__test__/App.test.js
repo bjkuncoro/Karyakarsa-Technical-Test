@@ -3,7 +3,7 @@ import BtcCard from '../pages/landing/BtcCard';
 
 afterAll(cleanup)
 
-test('renders learn react link', () => {
+test('Render and check component text', () => {
   render(<BtcCard currPrice={'2000'} />);
   const testElemnt = screen.getByTestId('testbtcprice');
 

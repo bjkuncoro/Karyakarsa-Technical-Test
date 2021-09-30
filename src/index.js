@@ -14,8 +14,6 @@ import Landing from './pages/landing';
 import { ChakraProvider } from "@chakra-ui/react"
 
 const Root = (props)=>{
-  const [anim, setAnim] = useState('')
-
   useEffect(() => {
     // console.log(routes)
   }, [])
@@ -27,31 +25,6 @@ const Root = (props)=>{
           <BrowserRouter basename={`/`}>
             <Switch>
               <Route exact path={`/`} component={Landing} />
-              {routes.unProtectedView.map(i=>{
-                return(
-                  <Route key={i.path} path={`${process.env.REACT_APP_PUBLIC_URL}${i.path}`} component={i.Component} />
-                )
-              })}
-              <App>
-                <Route exact path={`${process.env.REACT_APP_PUBLIC_URL}/`} render={() => {
-                    return (<Redirect to={`${process.env.REACT_APP_PUBLIC_URL}/beranda`} />)
-                }} />
-                <TransitionGroup>
-                  {routes.protectedView.map(({ path, Component }) => (
-                    <Route key={path}  exact  path={`${process.env.REACT_APP_PUBLIC_URL}${path}`}>
-                        {({ match }) => (
-                            <CSSTransition 
-                              in={match != null}
-                              timeout={100}
-                              classNames={anim} 
-                              unmountOnExit>
-                              <div><Component/></div>
-                            </CSSTransition> 
-                        )}
-                    </Route>
-                    ))}
-              </TransitionGroup> 
-            </App>
             </Switch>
           </BrowserRouter>
         </PersistGate>

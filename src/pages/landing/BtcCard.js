@@ -18,6 +18,7 @@ const BtcCard = ({updatedTime,currPrice,symbol,status}) => {
             </Flex>
             <Flex flex={3} align='center' direction='row' justify='space-between'>
                 <Flex>
+                    {/* set price color by condition ==> naik == green || turun == crimson || tetap == blue */}
                     <Heading orientation='horizontal' fontWeight='bold' fontSize={36} color={status=='naik'?'mediumseagreen':status=='turun'?'crimson':'dodgerblue'}>
                         <div dangerouslySetInnerHTML={{__html: symbol}}/>
                     </Heading>
